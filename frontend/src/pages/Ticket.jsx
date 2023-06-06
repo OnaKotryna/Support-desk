@@ -42,7 +42,7 @@ function Ticket() {
   return (
     <div className="ticket-page">
       <header className="ticket-header">
-        <BackButton to="/tickets" />
+        <BackButton url="/tickets" />
         <h2>
           Ticket ID: {ticket._id}
           <span className={`status status-${ticket.status}`}>
