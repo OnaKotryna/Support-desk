@@ -23,6 +23,7 @@ export const getNotes = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString();
+
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -39,9 +40,10 @@ export const noteSlice = createSlice({
       .addCase(getNotes.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getNotes.fulfilled, (state) => {
+      .addCase(getNotes.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
+        state.notes = action.payload;
       })
       .addCase(getNotes.rejected, (state, action) => {
         state.isLoading = false;
